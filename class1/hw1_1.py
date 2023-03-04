@@ -47,7 +47,7 @@ def no():
     StatusBar = Label(root, mystringvar.get(), relief = "sunken", anchor = W)
 # 建立StringVar
 mystringvar = StringVar()
-mystringvar.set(StatusBar)
+mystringvar.set("")
 # 建立 start按鈕
 start = Button(root, text = "start", command = go)
 start.pack()
