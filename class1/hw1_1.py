@@ -35,19 +35,20 @@ root.mainloop()
 """
 # 點按鈕跑出status(動態方法)(processing, done)
 
+# 建立StringVar
+mystringvar = StringVar()
+mystringvar.set("Initialiation")
 # 建立 StatusBar
-StatusBar = Label(root, text = "Initialiation", relief = "sunken", anchor = W)
+StatusBar = Label(root, textvariable = mystringvar, relief = "sunken", anchor = W)
 # 加入視窗
 StatusBar.pack(side = BOTTOM, fill = X)
 # 建立 start function
 def go():
-    StatusBar = Label(root, mystringvar.get(), relief = "sunken", anchor = W)
+    # 建立StringVar
+    mystringvar.set("start")
 # 建立 stop function
 def no():
-    StatusBar = Label(root, mystringvar.get(), relief = "sunken", anchor = W)
-# 建立StringVar
-mystringvar = StringVar()
-mystringvar.set("")
+    mystringvar.set("stop")
 # 建立 start按鈕
 start = Button(root, text = "start", command = go)
 start.pack()
@@ -55,6 +56,5 @@ start.pack()
 stop = Button(root, text = "stop", command = no)
 stop.pack()
 # get mylabel的文字內容
-Label(root, text = mystringvar.get()).pack()
 # 重複執行 root 物件
 root.mainloop()
