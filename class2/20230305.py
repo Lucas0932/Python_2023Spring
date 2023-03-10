@@ -73,8 +73,9 @@ StatusBar.grid(row = 2, column = 0, columnspan = 3, sticky = N+W+E)
 root.mainloop()
 """
 # 建立 ScrolledFrame 元件
+""""""
 sframe1 = ScrolledFrame(root, width = 300, height = 300)
-sframe1.pack()
+sframe1.grid()
 # 創建一個含有 ScrolledFrame 元件的 Frame
 inner_frame = sframe1.display_widget(Frame)
 # 綁定鼠標及滾輪
@@ -83,22 +84,22 @@ sframe1.bind_scroll_wheel(root)
 # 創建 button1
 button1 = Button(inner_frame, text = 1, height = 5)
 # 加入視窗
-button1.pack()
+button1.grid()
 # 創建 button2
 button2 = Button(inner_frame, text = 2, height = 5)
 # 加入視窗
-button2.pack()
+button2.grid()
 # 創建 button3
 button3 = Button(inner_frame, text = 3, height = 5)
 # 加入視窗
-button3.pack()
+button3.grid()
 # 創建 button4
 button4 = Button(inner_frame, text = 4, height = 5)
 # 加入視窗
-button4.pack()
+button4.grid()
 # 創建 button5
 button5 = Button(inner_frame, text = 5, height = 5)
 # 加入視窗
-button5.pack()
+button5.grid()
 # 重複執行 root 物件
 root.mainloop()
