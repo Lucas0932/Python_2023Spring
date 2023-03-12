@@ -34,7 +34,7 @@ mybutton2 = Button(root, text = "stop", command = stop).pack()
 root.mainloop()
 """
 # 點按鈕跑出status(動態方法)(processing, done)
-
+"""
 # 建立StringVar
 mystringvar = StringVar()
 mystringvar.set("Initialiation")
@@ -55,6 +55,6 @@ start.pack()
 # 建立 stop按鈕
 stop = Button(root, text = "stop", command = no)
 stop.pack()
-# get mylabel的文字內容
 # 重複執行 root 物件
 root.mainloop()
+"""

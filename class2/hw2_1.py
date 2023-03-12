@@ -8,16 +8,16 @@ from PIL import Image, ImageTk
 from tkscrolledframe import ScrolledFrame
 # 建立主視窗 Frame
 root = Tk()
-# 建立 ScrolledFrame 元件
-sframe1 = ScrolledFrame(root, width = 300, height = 300)
-sframe1.grid()
 # 設定視窗大小
 root.geometry("320x100")
-# 創建一個含有 ScrolledFrame 元件的 Frame
-inner_frame = sframe1.display_widget(Frame)
+# 建立 ScrolledFrame 元件
+sframe1 = ScrolledFrame(root, width = 320, height = 100)
+sframe1.pack()
 # 綁定鼠標及滾輪
 sframe1.bind_arrow_keys(root)
 sframe1.bind_scroll_wheel(root)
+# 創建一個含有 ScrolledFrame 元件的 Frame
+inner_frame = sframe1.display_widget(Frame)
 # 建立def
 def press():
     text = (group1.get())+ " "+ (group2.get())+ " "+ (group3.get()+" "+group4.get()+" "+group5.get()+" "+group6.get())

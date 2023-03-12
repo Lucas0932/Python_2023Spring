@@ -73,7 +73,7 @@ StatusBar.grid(row = 2, column = 0, columnspan = 3, sticky = N+W+E)
 root.mainloop()
 """
 # 建立 ScrolledFrame 元件
-""""""
+"""
 sframe1 = ScrolledFrame(root, width = 300, height = 300)
 sframe1.grid()
 # 創建一個含有 ScrolledFrame 元件的 Frame
@@ -103,3 +103,4 @@ button5 = Button(inner_frame, text = 5, height = 5)
 button5.grid()
 # 重複執行 root 物件
 root.mainloop()
+"""
