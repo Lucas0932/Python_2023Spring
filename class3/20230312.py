@@ -72,7 +72,7 @@ StatusBar.pack()
 # 重複執行 root 物件
 root.mainloop()
 """
-#
+# 建立清單列表 ListBox
 """
 # 建立清單列表 ListBox
 listbox = Listbox(root, selectmode = "extended")
@@ -85,8 +85,8 @@ listbox.pack()
 # 重複執行 root 物件
 root.mainloop()
 """
-#
-"""
+# 建立下拉式選單
+""""""
 def press():
     text = ("廠牌:")+(str(box.current()))+". "+(box.get())
     StatusBar["text"] = text
@@ -104,9 +104,9 @@ StatusBar = Label(root, text = "廠牌:")
 StatusBar.pack()
 # 重複執行 root 物件
 root.mainloop()
+
+#建立可以打開檔案的模組, openfile
 """
-#
-""""""
 # 建立 def openfile
 def openfile():
     # 單選檔案，並以 String 回傳路徑
@@ -129,3 +129,4 @@ imagelabel = Label(root)
 imagelabel.pack()
 # 重複執行 root 物件
 root.mainloop()
+"""
