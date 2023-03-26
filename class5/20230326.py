@@ -16,17 +16,17 @@ content = MIMEMultipart()
 # 郵件標題
 content["subject"] = "2023 Python App 創新程式春季班【Demo】"
 # 寄件者
-content["from"] = "lucasChang1112@gmail.com"
+content["from"] = "lucaschang1112@gmail.com"
 # 收件者
-content["to"] = "kubetech.academy0524@gmail.com"
+content["to"] = "sallyyengchi@gmail.com"
 # 郵件內容
 content.attach(text)
 # 郵件圖片內容
 content.attach(image)
+
 # 利用 with 來自動釋放資源
 with open("C:/Users/Lucas/Documents/Python_2023Spring/class5/password.txt", "r") as f:
     mailToken = f.read()
-    print(len(mailToken))
 # 建立 smtplib 物件
 smtp = smtplib.SMTP(host = "smtp.gmail.com", port = "587")
 # 利用 with 來自動釋放資源
@@ -36,7 +36,7 @@ with smtp:
         smtp.ehlo()
         # 建立加密傳輸
         smtp.starttls()
-        smtp.login("lucaschang1112@gmail.com", mailToken)
+        smtp.login("IAmSoGood1112@gmail.com", mailToken)
         # 寄送郵件
         smtp.send_message(content)
         print("Email is sended compeletely!")
