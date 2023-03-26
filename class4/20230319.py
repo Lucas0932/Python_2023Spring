@@ -52,13 +52,23 @@ statusBar2.grid(row = 0, column = 1, columnspan = 2, sticky = W)
 # 重複執行 root 物件
 root.mainloop()
 """
+
+""""""
 # 建立def
-def getValue1(e):
-    value1.set("R: "+str(year_scale1.get()))
-def getValue2(e):
-    value2.set("R: "+str(year_scale2.get()))
-def getValue3(e):
-    value3.set("R: "+str(year_scale3.get()))
+def getValue(e):
+    # 取得RGB
+    r = int(year_scale1.get())
+    g = int(year_scale2.get())
+    b = int(year_scale3.get())
+    # 數值轉換為16進位
+    hex = "#{:02x}{:02x}{:02x}".format (r, g, b)
+    # 分別設定 Label 文字內容
+    statusBar1["text"] = "R: "+str(year_scale1.get)
+    statusBar2["text"] = "R: "+str(year_scale2.get)
+    statusBar3["text"] = "R: "+str(year_scale3.get)
+    # 分別設定 statusBar1 背景
+    color["bg"] = hex
+    color["text"] = hex
 # 建立 title label
 title = Label(root, text = "選擇顏色(R,G,B)")
 # 加入視窗
@@ -71,7 +81,7 @@ statusBar1 = Label(root, textvariable = value1, fg = "black", anchor = W, relief
 # 加入視窗
 statusBar1.grid(row = 1, column = 0, columnspan = 3, sticky = W+E+S)
 # 建立 Scale 元件
-year_scale1 = Scale(root, from_ = 0, to = 255, orient = "horizontal", resolution = 1, length = 300, showvalue = True, command = getValue1)
+year_scale1 = Scale(root, from_ = 0, to = 255, orient = "horizontal", resolution = 1, length = 300, showvalue = True, command = getValue)
 year_scale1.grid(row = 2, column = 0, columnspan = 3)
 # 建立字串變數
 value2 = StringVar()
@@ -81,7 +91,7 @@ statusBar2 = Label(root, textvariable = value2, fg = "black", anchor = W, relief
 # 加入視窗
 statusBar2.grid(row = 3, column = 0, columnspan = 3, sticky = W+E+S)
 # 建立 Scale 元件
-year_scale2 = Scale(root, from_ = 0, to = 255, orient = "horizontal", resolution = 1, length = 300, showvalue = True, command = getValue2)
+year_scale2 = Scale(root, from_ = 0, to = 255, orient = "horizontal", resolution = 1, length = 300, showvalue = True, command = getValue)
 year_scale2.grid(row = 4, column = 0, columnspan = 3)
 # 建立字串變數
 value3 = StringVar()
@@ -91,7 +101,9 @@ statusBar3 = Label(root, textvariable = value3, fg = "black", anchor = W, relief
 # 加入視窗
 statusBar3.grid(row = 5, column = 0, columnspan = 3, sticky = W+E+S)
 # 建立 Scale 元件
-year_scale3 = Scale(root, from_ = 0, to = 255, orient = "horizontal", resolution = 1, length = 300, showvalue = True, command = getValue3)
+year_scale3 = Scale(root, from_ = 0, to = 255, orient = "horizontal", resolution = 1, length = 300, showvalue = True, command = getValue)
 year_scale3.grid(row = 6, column = 0, columnspan = 3)
+color = Label(root, text = "", fg = "white", bg = "white", relief = "sunken", bd = 2, font = (20), anchor = "center")
+color.grid(row = 7, column = 0, columnspan = 3, sticky = W+E+S)
 # 重複執行 root 物件
 root.mainloop()

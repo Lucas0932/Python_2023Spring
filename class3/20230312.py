@@ -86,7 +86,7 @@ listbox.pack()
 root.mainloop()
 """
 # 建立下拉式選單
-""""""
+"""
 def press():
     text = ("廠牌:")+(str(box.current()))+". "+(box.get())
     StatusBar["text"] = text
@@ -104,7 +104,7 @@ StatusBar = Label(root, text = "廠牌:")
 StatusBar.pack()
 # 重複執行 root 物件
 root.mainloop()
-
+"""
 #建立可以打開檔案的模組, openfile
 """
 # 建立 def openfile
