@@ -16,7 +16,6 @@ n = 1
 def press():
     global n
     n += 1
-    print(n)
     name = name_entrybox.get()
     email = email_entrybox.get()
     password = password_entrybox.get()
