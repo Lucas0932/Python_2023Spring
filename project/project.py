@@ -9,7 +9,19 @@ from PIL import ImageTk as PILImageTK
 from tkinter import messagebox
 # 建立主視窗 Frame
 root = Tk()
-root.geometry("1000x200")
+root.geometry("1000x400")
+def BestLeft():
+
+def RecentLeft():
+
+def LongestLeft():
+
+def BestRight():
+
+def RecentRight():
+
+def LongestRight():
+
 # 三種遊戲類別(冒險，戰鬥，生存)
 BestGroup = Label(root, text = "我的最愛", font = ("Arial", 13, "bold"))
 RecentGroup = Label(root, text = "最近新增", font = ("Arial", 13, "bold"))
@@ -34,26 +46,29 @@ LongestRightButton.grid(row = 4, column = 6, rowspan = 2)
 
 # 戰鬥類
 # 傳說對決
+AOV = 1
 AOVimg = PILIMAGE.open("project/img/AOV.jpg")
 AOVimg = AOVimg.resize((200, 200))
 AOVimg = PILImageTK.PhotoImage(AOVimg)
 AOVlabel = Button(root, image = AOVimg, width = 200, height = 200)
 AOVlabel.grid(row = 2, column = 2, rowspan = 2)
 # 荒野亂鬥
-BSimg = PILIMAGE.open("project/brawl.png")
+BS = 1
+BSimg = PILIMAGE.open("project/img/brawl.png")
 BSimg = BSimg.resize((200, 200))
 BSimg = PILImageTK.PhotoImage(BSimg)
 BSimg = Button(root, image = BSimg, width = 200, height = 200)
 BSimg.grid(row = 2, column = 3, rowspan = 2)
 
 # 麥塊
-MCimg = PILIMAGE.open("project/mc.jpg")
+MC = 1
+MCimg = PILIMAGE.open("project/img/mc.jpg")
 MCimg = MCimg.resize((100, 100))
 MCimg = PILImageTK.PhotoImage(MCimg)
 MCimg = Button(root, image = MCimg, width = 100, height = 100)
 MCimg.grid(row = 2, column = 4, rowspan = 2)
 # 機械磚塊
-ROBLOXimg = PILIMAGE.open("project/roblox.jpg")
+ROBLOXimg = PILIMAGE.open("project/img/roblox.jpg")
 ROBLOXimg = ROBLOXimg.resize((100, 100))
 ROBLOXimg = PILImageTK.PhotoImage(ROBLOXimg)
 ROBLOXimg = Button(root, image = ROBLOXimg, width = 100, height = 100)

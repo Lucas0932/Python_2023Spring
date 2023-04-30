@@ -52,10 +52,11 @@ r = requests.get("http://www.google.com/")
 # 列出 HTTP 狀態碼
 print(r.status_code)
 """
-# 
-""""""
+# 利用網站找出匯率
+"""
 # 不帶條件
 url = "https://api.exchangerate-api.com/v4/latest/TWD"
 res = requests.get(url)
 data = res.json()
 print("日幣對台幣的匯率為" + str(data["rates"]["JPY"]))
+"""
