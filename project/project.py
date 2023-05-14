@@ -9,6 +9,14 @@ from PIL import ImageTk as PILImageTK
 from tkinter import messagebox
 # 建立主視窗 Frame
 root = Tk()
+BestGames = ["project/img/AOV.jpg", "project/img/brawl.png", "project/img/mc.jpg", "project/img/roblox.jpg", 'project/img/Fornite.jpg', "project/img/Valorant.jpg", "project/img/Mech Arena.jpg"]
+RecentGames = []
+LongestGame = []
+print(BestGames[0])
+# 創建三個類別的中心點
+BestMiddle = 2
+RecentMiddle = 2
+LongestMiddle = 2
 # 登入按鈕
 def Login():
     # 驗證
@@ -44,39 +52,65 @@ def RecentLeft():
     print("hi")
 def LongestLeft():
     print("hi")
-def BestRight():
+def BestRight(BestGamesPass):
     # 把它變全域變數
     global BestMiddle
-    BestMiddle +=1
+    
+    print("BestGames",BestGamesPass)
+    """
+    # 位置1在list中的位置
+    Best1 = BestMiddle-2
+    # 位置2在list中的位置
+    Best2 = BestMiddle-1
+    # 位置3在list中的位置
+    Best3 = BestMiddle
+    # 位置4在list中的位置
+    Best4 = BestMiddle+1
+    # 位置5在list中的位置
+    Best5 = BestMiddle+2
+    # 位置1
+    BestPlace1 = BestGames[Best1]
+    # 位置2
+    BestPlace2 = BestGames[Best2]
+    # 位置3
+    BestPlace3 = BestGames[Best3]
+    # 位置4
+    BestPlace4 = BestGames[Best4]
+    # 位置5
+    BestPlace5 = BestGames[Best5]
     # 圖片1
-    BestPicture1 = PILIMAGE.open(place1)
+    BestPicture1 = PILIMAGE.open(BestPlace1)
     BestPicture1 = BestPicture1.resize((150, 150))
     BestPicture1 = PILImageTK.PhotoImage(BestPicture1)
+    BestButton1 = Button(root, image = BestPicture2, width = 150, height = 150, command = AOVinfo)
     BestButton1["image"] = BestPicture1
     # 圖片2
-    BestPicture2 = PILIMAGE.open(place2)
+    BestPicture2 = PILIMAGE.open(BestPlace2)
     BestPicture2 = BestPicture2.resize((150, 150))
     BestPicture2 = PILImageTK.PhotoImage(BestPicture2)
     BestButton2 = Button(root, image = BestPicture2, width = 150, height = 150, command = AOVinfo)
     BestButton2["image"] = BestPicture2
     # 圖片3
-    BestPicture3 = PILIMAGE.open(place3)
+    BestPicture3 = PILIMAGE.open(BestPlace3)
     BestPicture3 = BestPicture3.resize((150, 150))
     BestPicture3 = PILImageTK.PhotoImage(BestPicture3)
     BestButton3 = Button(root, image = BestPicture3, width = 150, height = 150, command = AOVinfo)
     BestButton3["image"] = BestPicture3
     # 圖片4
-    BestPicture4 = PILIMAGE.open(place4)
+    BestPicture4 = PILIMAGE.open(BestPlace4)
     BestPicture4 = BestPicture4.resize((150, 150))
     BestPicture4 = PILImageTK.PhotoImage(BestPicture4)
     BestButton4 = Button(root, image = BestPicture4, width = 150, height = 150, command = AOVinfo)
     BestButton4["image"] = BestPicture4
     # 圖片5
-    BestPicture5 = PILIMAGE.open(place5)
+    BestPicture5 = PILIMAGE.open(BestPlace5)
     BestPicture5 = BestPicture5.resize((150, 150))
     BestPicture5 = PILImageTK.PhotoImage(BestPicture5)
     BestButton5 = Button(root, image = BestPicture5, width = 150, height = 150, command = AOVinfo)
     BestButton5["image"] = BestPicture5
+    # 將中心點在所有遊戲中向右移一個
+    """
+    BestMiddle +=1
 def RecentRight():
     print("hi")
 def LongestRight():
@@ -121,52 +155,7 @@ def MechArenainfo():
 BestGames = []
 RecentGames = []
 LongestGames = []
-# 創建三個類別的中心點
-BestMiddle = 2
-RecentMiddle = 2
-LongestMiddle = 2
-# 我的最愛類別:
-BestGames = ["project/img/AOV.jpg", "project/img/brawl.png", "project/img/mc.jpg", "project/img/roblox.jpg", 'project/img/Fornite.jpg', "project/img/Valorant.jpg", "project/img/Mech Arena.jpg"]
-# 位置1
-place1 = BestGames[BestMiddle-2]
-# 位置2
-place2 = BestGames[BestMiddle-1]
-# 位置3
-place3 = BestGames[BestMiddle]
-# 位置4
-place4 = BestGames[BestMiddle+1]
-# 位置5
-place5 = BestGames[BestMiddle+2]
-# 圖片1
-BestPicture1 = PILIMAGE.open(place1)
-BestPicture1 = BestPicture1.resize((150, 150))
-BestPicture1 = PILImageTK.PhotoImage(BestPicture1)
-BestButton1 = Button(root, image = BestPicture1, width = 150, height = 150, command = AOVinfo)
-BestButton1.grid(column = 2, row = 0)
-# 圖片2
-BestPicture2 = PILIMAGE.open(place2)
-BestPicture2 = BestPicture2.resize((150, 150))
-BestPicture2 = PILImageTK.PhotoImage(BestPicture2)
-BestButton2 = Button(root, image = BestPicture2, width = 150, height = 150, command = AOVinfo)
-BestButton2.grid(column = 3, row = 0)
-# 圖片3
-BestPicture3 = PILIMAGE.open(place3)
-BestPicture3 = BestPicture3.resize((150, 150))
-BestPicture3 = PILImageTK.PhotoImage(BestPicture3)
-BestButton3 = Button(root, image = BestPicture3, width = 150, height = 150, command = AOVinfo)
-BestButton3.grid(column = 4, row = 0)
-# 圖片4
-BestPicture4 = PILIMAGE.open(place4)
-BestPicture4 = BestPicture4.resize((150, 150))
-BestPicture4 = PILImageTK.PhotoImage(BestPicture4)
-BestButton4 = Button(root, image = BestPicture4, width = 150, height = 150, command = AOVinfo)
-BestButton4.grid(column = 5, row = 0)
-# 圖片5
-BestPicture5 = PILIMAGE.open(place5)
-BestPicture5 = BestPicture5.resize((150, 150))
-BestPicture5 = PILImageTK.PhotoImage(BestPicture5)
-BestButton5 = Button(root, image = BestPicture5, width = 150, height = 150, command = AOVinfo)
-BestButton5.grid(column = 6, row = 0)
+""""""""""""
 # 三種遊戲類別(我的最愛, 最近新增, 遊玩最久)
 BestGroup = Label(root, text = "我的最愛", font = ("Arial", 13, "bold"))
 RecentGroup = Label(root, text = "最近新增", font = ("Arial", 13, "bold"))
@@ -178,7 +167,7 @@ LongestGroup.grid(row = 4, column = 0, rowspan = 2)
 BestLeftButton = Button(root, text = "<", font = ("Arial", 13, "bold"), command = BestLeft)
 RecentLeftButton = Button(root, text = "<", font = ("Arial", 13, "bold"), command = RecentLeft)
 LongestLeftButton = Button(root, text = "<", font = ("Arial", 13, "bold"), command = LongestLeft)
-BestRightButton = Button(root, text = ">", font = ("Arial", 13, "bold"), command = BestRight)
+BestRightButton = Button(root, text = ">", font = ("Arial", 13, "bold"), command = lambda:BestRight(BestGames))
 RecentRightButton = Button(root, text = ">", font = ("Arial", 13, "bold"), command = RecentRight)
 LongestRightButton = Button(root, text = ">", font = ("Arial", 13, "bold"), command = LongestRight)
 BestLeftButton.grid(row = 0, column = 1, rowspan = 2)
