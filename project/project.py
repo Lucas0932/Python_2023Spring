@@ -45,72 +45,187 @@ def Login():
     PasswordEntry.grid(column = 1, row = 2, columnspan = 2)
     LoginButton = Button(LoginWindow, text = "Login", width = 10, command = lambda:verifyUser(LoginWindow, AccountEntry, PasswordEntry))
     LoginButton.grid(column = 1, row = 3)
+# 設定按鈕
+def Settings():
+    def closethewindow():
+        SettingsWindow.destroy()
+    SettingsWindow = Toplevel(root)
+    SettingsWindow.title("Settings")
+    WordColor = Button(SettingsWindow, text = "字幕顏色", command = ChooseColor)
+    WordColor.grid(row = 0, column = 0)
+    language = Button(SettingsWindow, text = "語言", command = ChooseLanguage)
+    language.grid(row = 1, column = 0)
+    CloseIt = Button(SettingsWindow, text = "退出", command = closethewindow)
+    CloseIt.grid(row = 2, column = 0)
+# 設定語言
+def ChooseLanguage():
+    def ChooseChinese():
+        pass
+    def ChooseEnglish():
+        pass
+    ChooseLanguageWindow = Toplevel(root)
+    ChooseLanguageWindow.title("選擇語言")
+    Chinese = Button(ChooseLanguageWindow, text = "繁體中文", command = ChooseChinese)
+    Chinese.pack()
+    English = Button(ChooseLanguageWindow, text = "英文", command = ChooseEnglish)
+    English.pack()
+# 設定字幕顏色
+def ChooseColor():
+    def changecolor(colorHex):
+        Login["fg"] = colorHex
+        Settings["fg"] = colorHex
+        Storehouse["fg"] = colorHex
+        BestGroup["fg"] = colorHex
+        LongestGroup["fg"] = colorHex
+        RecentGroup["fg"] = colorHex
+        Chinese["fg"] = colorHex
+        English["fg"] = colorHex
+        ChooseColorWindow.destroy()
+    def getValue(e):
+        # 取得RGB
+        R = int(Red.get())
+        G = int(Green.get())
+        B = int(Blue.get())
+        # 數值轉換為16進位
+        hex = "#{:02x}{:02x}{:02x}".format (R, G, B)
+        # 分別設定 Label 文字內容
+        RedColor["text"] = "R: "+str(Red.get)
+        GreenColor["text"] = "R: "+str(Green.get)
+        BlueColor["text"] = "R: "+str(Blue.get)
+        # 分別設定 statusBar1 背景
+        color["bg"] = hex
+        color["text"] = hex
+    global ChooseColor
+    global SettingsWindow
+    ChooseColorWindow = Toplevel(root)
+    ChooseColorWindow.title("選擇顏色")
+    # 建立 title label
+    title = Label(ChooseColorWindow, text = "選擇顏色(R,G,B)")
+    # 加入視窗
+    title.grid(row = 0, column = 0)
+    # 建立字串變數
+    value1 = StringVar()
+    value1.set("R: 0")
+    # 建立 Label(Red)
+    RedColor = Label(ChooseColorWindow, textvariable = value1, fg = "black", anchor = W, relief = "sunken", bd = 2)
+    RedColor.grid(row = 1, column = 0, columnspan = 3, sticky = W+E+S)
+    # 建立 Scale(Red) 元件
+    Red = Scale (ChooseColorWindow, from_ = 0, to = 255, orient = "horizontal", resolution = 1, length = 300, showvalue = True, command = getValue)
+    Red.grid(row = 2, column = 0, columnspan = 3)
+    # 建立字串變數
+    value2 = StringVar()
+    value2.set("G: 0")
+    # 建立 Label(Green)
+    GreenColor = Label(ChooseColorWindow, textvariable = value2, fg = "black", anchor = W, relief = "sunken", bd = 2)
+    GreenColor.grid(row = 3, column = 0, columnspan = 3, sticky = W+E+S)
+    # 建立 Scale(Green) 元件
+    Green = Scale(ChooseColorWindow, from_ = 0, to = 255, orient = "horizontal", resolution = 1, length = 300, showvalue = True, command = getValue)
+    Green.grid(row = 4, column = 0, columnspan = 3)
+    # 建立字串變數
+    value3 = StringVar()
+    value3.set("B: 0")
+    # 建立 Label(Blue)
+    BlueColor = Label(ChooseColorWindow, textvariable = value3, fg = "black", anchor = W, relief = "sunken", bd = 2)
+    BlueColor.grid(row = 5, column = 0, columnspan = 3, sticky = W+E+S)
+    # 建立 Scale(Blue) 元件
+    Blue = Scale(ChooseColorWindow, from_ = 0, to = 255, orient = "horizontal", resolution = 1, length = 300, showvalue = True, command = getValue)
+    Blue.grid(row = 6, column = 0, columnspan = 3)
+    # 顏色的label
+    color = Label(ChooseColorWindow, text = "", fg = "white", bg = "white", relief = "sunken", bd = 2, font = (20), anchor = "center")
+    color.grid(row = 7, column = 0, columnspan = 3, sticky = W+E+S)
+    # 確定更改顏色的按鈕
+    confirm = Button(ChooseColorWindow, text = "確定", fg = "black", command = lambda:changecolor(color["text"]))
+    confirm.grid(row = 8, column = 0, columnspan = 3, sticky = W+E+S)
+# 遊戲庫
+def Storehouse():
+    StorehouseWindow = Toplevel(root)
+    StorehouseWindow.title("storehouse")
+    Wait = Label(StorehouseWindow, text = "敬請期待!")
+    Wait.pack()
 # 類別左右方向鍵
 def BestLeft():
-    print("hi")
+    BestRightButton["state"] = ACTIVE
+    # 把它變全域變數
+    global BestMiddle
+    global BestGames
+    # 將中心點在所有遊戲中向右移一個
+    BestMiddle -=1
+    # 圖片1
+    BestPicture1 = PILIMAGE.open(BestGames[BestMiddle-2])
+    BestPicture1 = BestPicture1.resize((150, 150))
+    global img_tk0
+    img_tk0 = PILImageTK.PhotoImage(BestPicture1)
+    BestButton1["image"] = img_tk0
+    # 圖片2
+    BestPicture2 = PILIMAGE.open(BestGames[BestMiddle-1])
+    BestPicture2 = BestPicture2.resize((150, 150))
+    global img_tk1
+    img_tk1 = PILImageTK.PhotoImage(BestPicture2)
+    BestButton2["image"] = img_tk1
+    # 圖片3
+    BestPicture3 = PILIMAGE.open(BestGames[BestMiddle])
+    BestPicture3 = BestPicture3.resize((150, 150))
+    global img_tk3
+    img_tk3 = PILImageTK.PhotoImage(BestPicture3)
+    BestButton3["image"] = img_tk3
+    # 圖片4
+    BestPicture4 = PILIMAGE.open(BestGames[BestMiddle+1])
+    BestPicture4 = BestPicture4.resize((150, 150))
+    global img_tk4
+    img_tk4 = PILImageTK.PhotoImage(BestPicture4)
+    BestButton4["image"] = img_tk4
+    # 圖片5
+    BestPicture5 = PILIMAGE.open(BestGames[BestMiddle+2])
+    BestPicture5 = BestPicture5.resize((150, 150))
+    global img_tk5
+    img_tk5 = PILImageTK.PhotoImage(BestPicture5)
+    BestButton5["image"] = img_tk5
+    if BestMiddle == 2:
+        BestLeftButton["state"] = DISABLED
 def RecentLeft():
     print("hi")
 def LongestLeft():
     print("hi")
-def BestRight(BestGamesPass):
+def BestRight():
+    BestLeftButton["state"] = ACTIVE
     # 把它變全域變數
     global BestMiddle
-    
-    print("BestGames",BestGamesPass)
-    """
-    # 位置1在list中的位置
-    Best1 = BestMiddle-2
-    # 位置2在list中的位置
-    Best2 = BestMiddle-1
-    # 位置3在list中的位置
-    Best3 = BestMiddle
-    # 位置4在list中的位置
-    Best4 = BestMiddle+1
-    # 位置5在list中的位置
-    Best5 = BestMiddle+2
-    # 位置1
-    BestPlace1 = BestGames[Best1]
-    # 位置2
-    BestPlace2 = BestGames[Best2]
-    # 位置3
-    BestPlace3 = BestGames[Best3]
-    # 位置4
-    BestPlace4 = BestGames[Best4]
-    # 位置5
-    BestPlace5 = BestGames[Best5]
-    # 圖片1
-    BestPicture1 = PILIMAGE.open(BestPlace1)
-    BestPicture1 = BestPicture1.resize((150, 150))
-    BestPicture1 = PILImageTK.PhotoImage(BestPicture1)
-    BestButton1 = Button(root, image = BestPicture2, width = 150, height = 150, command = AOVinfo)
-    BestButton1["image"] = BestPicture1
-    # 圖片2
-    BestPicture2 = PILIMAGE.open(BestPlace2)
-    BestPicture2 = BestPicture2.resize((150, 150))
-    BestPicture2 = PILImageTK.PhotoImage(BestPicture2)
-    BestButton2 = Button(root, image = BestPicture2, width = 150, height = 150, command = AOVinfo)
-    BestButton2["image"] = BestPicture2
-    # 圖片3
-    BestPicture3 = PILIMAGE.open(BestPlace3)
-    BestPicture3 = BestPicture3.resize((150, 150))
-    BestPicture3 = PILImageTK.PhotoImage(BestPicture3)
-    BestButton3 = Button(root, image = BestPicture3, width = 150, height = 150, command = AOVinfo)
-    BestButton3["image"] = BestPicture3
-    # 圖片4
-    BestPicture4 = PILIMAGE.open(BestPlace4)
-    BestPicture4 = BestPicture4.resize((150, 150))
-    BestPicture4 = PILImageTK.PhotoImage(BestPicture4)
-    BestButton4 = Button(root, image = BestPicture4, width = 150, height = 150, command = AOVinfo)
-    BestButton4["image"] = BestPicture4
-    # 圖片5
-    BestPicture5 = PILIMAGE.open(BestPlace5)
-    BestPicture5 = BestPicture5.resize((150, 150))
-    BestPicture5 = PILImageTK.PhotoImage(BestPicture5)
-    BestButton5 = Button(root, image = BestPicture5, width = 150, height = 150, command = AOVinfo)
-    BestButton5["image"] = BestPicture5
+    global BestGames
     # 將中心點在所有遊戲中向右移一個
-    """
     BestMiddle +=1
+    # 圖片1
+    BestPicture1 = PILIMAGE.open(BestGames[BestMiddle-2])
+    BestPicture1 = BestPicture1.resize((150, 150))
+    global img_tk0
+    img_tk0 = PILImageTK.PhotoImage(BestPicture1)
+    BestButton1["image"] = img_tk0
+    # 圖片2
+    BestPicture2 = PILIMAGE.open(BestGames[BestMiddle-1])
+    BestPicture2 = BestPicture2.resize((150, 150))
+    global img_tk1
+    img_tk1 = PILImageTK.PhotoImage(BestPicture2)
+    BestButton2["image"] = img_tk1
+    # 圖片3
+    BestPicture3 = PILIMAGE.open(BestGames[BestMiddle])
+    BestPicture3 = BestPicture3.resize((150, 150))
+    global img_tk3
+    img_tk3 = PILImageTK.PhotoImage(BestPicture3)
+    BestButton3["image"] = img_tk3
+    # 圖片4
+    BestPicture4 = PILIMAGE.open(BestGames[BestMiddle+1])
+    BestPicture4 = BestPicture4.resize((150, 150))
+    global img_tk4
+    img_tk4 = PILImageTK.PhotoImage(BestPicture4)
+    BestButton4["image"] = img_tk4
+    # 圖片5
+    BestPicture5 = PILIMAGE.open(BestGames[BestMiddle+2])
+    BestPicture5 = BestPicture5.resize((150, 150))
+    global img_tk5
+    img_tk5 = PILImageTK.PhotoImage(BestPicture5)
+    BestButton5["image"] = img_tk5
+    BestRightStop = (len(BestGames)-3)
+    if BestMiddle == BestRightStop:
+        BestRightButton["state"] = DISABLED
 def RecentRight():
     print("hi")
 def LongestRight():
@@ -151,11 +266,6 @@ def MechArenainfo():
     MechArenainfoWindows = Toplevel(root)
     MechArenainfoWindows.title("MechArena")
     MechArenainfoWindows.mainloop()
-# 先創建三個類別的遊戲 list
-BestGames = []
-RecentGames = []
-LongestGames = []
-""""""""""""
 # 三種遊戲類別(我的最愛, 最近新增, 遊玩最久)
 BestGroup = Label(root, text = "我的最愛", font = ("Arial", 13, "bold"))
 RecentGroup = Label(root, text = "最近新增", font = ("Arial", 13, "bold"))
@@ -165,9 +275,12 @@ RecentGroup.grid(row = 2, column = 0, rowspan = 2,)
 LongestGroup.grid(row = 4, column = 0, rowspan = 2)
 # 遊戲類別中的左右選擇鍵
 BestLeftButton = Button(root, text = "<", font = ("Arial", 13, "bold"), command = BestLeft)
+BestLeftButton["state"] = DISABLED
 RecentLeftButton = Button(root, text = "<", font = ("Arial", 13, "bold"), command = RecentLeft)
+RecentLeftButton["state"] = DISABLED
 LongestLeftButton = Button(root, text = "<", font = ("Arial", 13, "bold"), command = LongestLeft)
-BestRightButton = Button(root, text = ">", font = ("Arial", 13, "bold"), command = lambda:BestRight(BestGames))
+LongestLeftButton["state"] = DISABLED
+BestRightButton = Button(root, text = ">", font = ("Arial", 13, "bold"), command = BestRight)
 RecentRightButton = Button(root, text = ">", font = ("Arial", 13, "bold"), command = RecentRight)
 LongestRightButton = Button(root, text = ">", font = ("Arial", 13, "bold"), command = LongestRight)
 BestLeftButton.grid(row = 0, column = 1, rowspan = 2)
@@ -180,11 +293,47 @@ LongestRightButton.grid(row = 4, column = 7, rowspan = 2)
 Login = Button(root, text = "登入/註冊", font = ("Arial", 13, "bold"), command = Login)
 Login.grid(row = 6, column = 2)
 # 設定
-Settings = Button(root, text = "遊戲設定", font = ("Arial", 13, "bold"))
+Settings = Button(root, text = "遊戲設定", font = ("Arial", 13, "bold"), command = Settings)
 Settings.grid(row = 6, column = 4)
 # 遊戲庫
-Storehouse = Button(root, text = "我的遊戲庫", font = ("Arial", 13, "bold"))
+Storehouse = Button(root, text = "我的遊戲庫", font = ("Arial", 13, "bold"), command = Storehouse)
 Storehouse.grid(row = 6, column = 6)
+# 我的最愛-五個架上遊戲
+# 圖片1
+BestPicture1 = PILIMAGE.open(BestGames[BestMiddle-2])
+BestPicture1 = BestPicture1.resize((150, 150))
+BestPicture1 = PILImageTK.PhotoImage(BestPicture1)
+BestButton1 = Button(root, image = BestPicture1, width = 150, height = 150, command = AOVinfo)
+BestButton1["image"] = BestPicture1
+BestButton1.grid(row = 0, column = 2, rowspan = 2)
+# 圖片2
+BestPicture2 = PILIMAGE.open(BestGames[BestMiddle-1])
+BestPicture2 = BestPicture2.resize((150, 150))
+BestPicture2 = PILImageTK.PhotoImage(BestPicture2)
+BestButton2 = Button(root, image = BestPicture2, width = 150, height = 150, command = AOVinfo)
+BestButton2["image"] = BestPicture2
+BestButton2.grid(row = 0, column = 3, rowspan = 2)
+# 圖片3
+BestPicture3 = PILIMAGE.open(BestGames[BestMiddle])
+BestPicture3 = BestPicture3.resize((150, 150))
+BestPicture3 = PILImageTK.PhotoImage(BestPicture3)
+BestButton3 = Button(root, image = BestPicture3, width = 150, height = 150, command = AOVinfo)
+BestButton3["image"] = BestPicture3
+BestButton3.grid(row = 0, column = 4, rowspan = 2)
+# 圖片4
+BestPicture4 = PILIMAGE.open(BestGames[BestMiddle+1])
+BestPicture4 = BestPicture4.resize((150, 150))
+BestPicture4 = PILImageTK.PhotoImage(BestPicture4)
+BestButton4 = Button(root, image = BestPicture4, width = 150, height = 150, command = AOVinfo)
+BestButton4["image"] = BestPicture4
+BestButton4.grid(row = 0, column = 5, rowspan = 2)
+# 圖片5
+BestPicture5 = PILIMAGE.open(BestGames[BestMiddle+2])
+BestPicture5 = BestPicture5.resize((150, 150))
+BestPicture5 = PILImageTK.PhotoImage(BestPicture5)
+BestButton5 = Button(root, image = BestPicture5, width = 150, height = 150, command = AOVinfo)
+BestButton5["image"] = BestPicture5
+BestButton5.grid(row = 0, column = 6, rowspan = 2)
 # 遊戲
 # 傳說對決
 AOVimg = PILIMAGE.open("project/img/AOV.jpg")
