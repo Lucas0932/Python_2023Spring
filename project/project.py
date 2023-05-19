@@ -86,7 +86,7 @@ def ChooseLanguage():
         BestGroup["text"] = English[0]
         RecentGroup["text"] = English[1]
         LongestGroup["text"] = English[2]
-        Login["text"] = English[3]
+        Login["text"] = English[3] 
         Settings["text"] = English[4]
         Storehouse["text"] = English[5]
         ChooseLanguageWindow.destroy()
