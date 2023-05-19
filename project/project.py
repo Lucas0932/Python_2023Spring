@@ -15,9 +15,8 @@ BestGames = ["project/img/AOV.jpg", "project/img/brawl.png", "project/img/mc.jpg
 RecentGames = ["project/img/CallOfDuty.png", "project/img/LOL.jfif", "project/img/LuigisMansion.jpg", "project/img/Mariooo.jpeg", "project/img/OverCook.jpg", "project/img/Pubg.png", "project/img/Splatoon3.jfif", "project/img/zelda.jfif"]
 LongestGame = ["project/img/fall guys.jfif", "project/img/mario.jpg"]
 BestGameInfo = ["AOVinfo", "BSinfo", "MCinfo", "Robloxinfo", "Forniteinfo", "Valorantinfo", "MechArenainfo"]
-Chinese = ["我的最愛", "最近新增", "遊玩最久", "登入/註冊", "遊戲設定", "我的遊戲庫", "字幕顏色", "語言", "退出", "帳戶登入", "帳號", "密碼", "登入", "繁體中文", "英文", "敬請期待!"]
-English = ["My Favorite", "Recent Add", "Played Longest", "Login/Sign Up", "Game Settings", "My Games Storehouse", "Word Color", "Language", "Go Back", "User Login", "Account", "Password", "Login", "Chinese", "English", "Stay Tuned!"]
-
+languagedata = {"Chinese" : ["我的最愛", "最近新增", "遊玩最久", "登入/註冊", "遊戲設定", "我的遊戲庫", "字幕顏色", "語言", "退出", "帳戶登入", "帳號", "密碼", "登入", "繁體中文", "英文", "敬請期待!"], "English" : ["My Favorite", "Recent Add", "Played Longest", "Login/Sign Up", "Game Settings", "My Games Storehouse", "Word Color", "Language", "Go Back", "User Login", "Account", "Password", "Login", "Chinese", "English", "Stay Tuned!"]}
+language = "Chinese"
 
 # 創建三個類別的中心點
 BestMiddle = 2
@@ -26,7 +25,7 @@ LongestMiddle = 2
 
 # 登入按鈕
 def Login():
-    global Chinese
+    global language
     # 驗證
     def verifyUser(LoginWindow, AccountEntry, PasswordEntry):
         if AccountEntry.get() == "Lucas" and PasswordEntry.get() == "Lucas0932_tw":
@@ -41,54 +40,84 @@ def Login():
     LoginWindow = Toplevel(root)
     LoginWindow.title("Login")
     LoginWindow.geometry("280x200")
-    UserLogin = Label(LoginWindow, text = Chinese[9])
+    UserLogin = Label(LoginWindow, text = languagedata[language][9])
     UserLogin.grid(column = 1, row = 0)
-    Account = Label(LoginWindow, text = Chinese[10])
+    Account = Label(LoginWindow, text = languagedata[language][10])
     Account.grid(column = 0, row = 1)
-    Password = Label(LoginWindow, text = Chinese[11])
+    Password = Label(LoginWindow, text = languagedata[language][11])
     Password.grid(column = 0, row = 2)
     AccountEntry = Entry(LoginWindow)
     AccountEntry.grid(column = 1, row = 1, columnspan = 2)
     PasswordEntry = Entry(LoginWindow, show = "*")
     PasswordEntry.grid(column = 1, row = 2, columnspan = 2)
-    LoginButton = Button(LoginWindow, text = Chinese[12], width = 10, command = lambda:verifyUser(LoginWindow, AccountEntry, PasswordEntry))
+    LoginButton = Button(LoginWindow, text = languagedata[language][12], width = 10, command = lambda:verifyUser(LoginWindow, AccountEntry, PasswordEntry))
     LoginButton.grid(column = 1, row = 3)
 
 
 # 設定按鈕
 def Settings():
-    global Chinese
+    global language
     def closethewindow():
         SettingsWindow.destroy()
     SettingsWindow = Toplevel(root)
     SettingsWindow.title("Settings")
-    WordColor = Button(SettingsWindow, text = Chinese[6], command = ChooseColor)
+    WordColor = Button(SettingsWindow, text = languagedata[language][6], command = ChooseColor)
     WordColor.grid(row = 0, column = 0)
-    language = Button(SettingsWindow, text = Chinese[7], command = ChooseLanguage)
-    language.grid(row = 1, column = 0)
-    CloseIt = Button(SettingsWindow, text = Chinese[8], command = closethewindow)
+    llanguage = Button(SettingsWindow, text = languagedata[language][7], command = ChooseLanguage)
+    llanguage.grid(row = 1, column = 0)
+    CloseIt = Button(SettingsWindow, text = languagedata[language][8], command = closethewindow)
     CloseIt.grid(row = 2, column = 0)
 
 
 # 設定語言
 def ChooseLanguage():
     def ChooseChinese():
-        global Chinese
-        BestGroup["text"] = Chinese[0]
-        RecentGroup["text"] = Chinese[1]
-        LongestGroup["text"] = Chinese[2]
-        Login["text"] = Chinese[3]
-        Settings["text"] = Chinese[4]
-        Storehouse["text"] = Chinese[5]
+        global language
+        global WordColor
+        global llanguage
+        global CloseIt
+        global UserLogin
+        global Account
+        global Password
+        global LoginButton
+        language = "Chinese"
+        BestGroup["text"] = languagedata[language][0]
+        RecentGroup["text"] = languagedata[language][1]
+        LongestGroup["text"] = languagedata[language][2]
+        Login["text"] = languagedata[language][3]
+        Settings["text"] = languagedata[language][4]
+        Storehouse["text"] = languagedata[language][5]
+        WordColor["text"] = languagedata[language][6]
+        llanguage["text"] = languagedata[language][7]
+        CloseIt["text"] = languagedata[language][8]
+        UserLogin["text"] = languagedata[language][9]
+        Account["text"] = languagedata[language][10]
+        Password["text"] = languagedata[language][11]
+        LoginButton["text"] = languagedata[language][12]
         ChooseLanguageWindow.destroy()
     def ChooseEnglish():
-        global English
-        BestGroup["text"] = English[0]
-        RecentGroup["text"] = English[1]
-        LongestGroup["text"] = English[2]
-        Login["text"] = English[3] 
-        Settings["text"] = English[4]
-        Storehouse["text"] = English[5]
+        global language
+        global WordColor
+        global llanguage
+        global CloseIt
+        global UserLogin
+        global Account
+        global Password
+        global LoginButton
+        language = "English"
+        BestGroup["text"] = languagedata[language][0]
+        RecentGroup["text"] = languagedata[language][1]
+        LongestGroup["text"] = languagedata[language][2]
+        Login["text"] = languagedata[language][3] 
+        Settings["text"] = languagedata[language][4]
+        Storehouse["text"] = languagedata[language][5]
+        WordColor["text"] = languagedata[language][6]
+        llanguage["text"] = languagedata[language][7]
+        CloseIt["text"] = languagedata[language][8]
+        UserLogin["text"] = languagedata[language][9]
+        Account["text"] = languagedata[language][10]
+        Password["text"] = languagedata[language][11]
+        LoginButton["text"] = languagedata[language][12]
         ChooseLanguageWindow.destroy()
     ChooseLanguageWindow = Toplevel(root)
     ChooseLanguageWindow.title("選擇語言")
@@ -503,9 +532,9 @@ def Overcookinfo():
 
 
 # 三種遊戲類別(我的最愛, 最近新增, 遊玩最久)
-BestGroup = Label(root, text = Chinese[0], font = ("Arial", 13, "bold"))
-RecentGroup = Label(root, text = Chinese[1], font = ("Arial", 13, "bold"))
-LongestGroup = Label(root, text = Chinese[2], font = ("Arial", 13, "bold"))
+BestGroup = Label(root, text = languagedata[language][0], font = ("Arial", 13, "bold"))
+RecentGroup = Label(root, text = languagedata[language][1], font = ("Arial", 13, "bold"))
+LongestGroup = Label(root, text = languagedata[language][2], font = ("Arial", 13, "bold"))
 BestGroup.grid(row = 0, column = 0, rowspan = 2)
 RecentGroup.grid(row = 2, column = 0, rowspan = 2,)   
 LongestGroup.grid(row = 4, column = 0, rowspan = 2)
@@ -542,13 +571,13 @@ LongestRightButton.grid(row = 4, column = 7, rowspan = 2)
 
 
 # 帳戶資訊
-Login = Button(root, text = Chinese[3], font = ("Arial", 13, "bold"), command = Login)
+Login = Button(root, text = languagedata[language][3], font = ("Arial", 13, "bold"), command = Login)
 Login.grid(row = 6, column = 2)
 # 設定
-Settings = Button(root, text = Chinese[4], font = ("Arial", 13, "bold"), command = Settings)
+Settings = Button(root, text = languagedata[language][4], font = ("Arial", 13, "bold"), command = Settings)
 Settings.grid(row = 6, column = 4)
 # 遊戲庫
-Storehouse = Button(root, text = Chinese[5], font = ("Arial", 13, "bold"), command = Storehouse)
+Storehouse = Button(root, text = languagedata[language][5], font = ("Arial", 13, "bold"), command = Storehouse)
 Storehouse.grid(row = 6, column = 6)
 
 
